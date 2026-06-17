@@ -27,6 +27,16 @@
 			</div>
 		</header>
 
+		<!-- Inline + blocking so --header-height is set before .hero lays out; defer/external would cause a height flash. -->
+		<script>
+			function setHeaderHeight() {
+				var height = document.querySelector(".site-header").offsetHeight;
+				document.documentElement.style.setProperty("--header-height", height + "px");
+			}
+			setHeaderHeight();
+			window.addEventListener("resize", setHeaderHeight);
+		</script>
+
 		<main>
 			<!-- 1. Hero -->
 			<section class="screen hero" id="hero">

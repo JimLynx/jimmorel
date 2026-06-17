@@ -137,7 +137,7 @@ button:focus-visible {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
-	min-height: 70vh;
+	min-height: calc(100vh - var(--header-height, 72px));
 }
 
 .hero-spine {
@@ -154,7 +154,7 @@ button:focus-visible {
 }
 
 .hero h1 {
-	font-size: 2.75rem;
+	font-size: 4.25rem;
 	max-width: 14ch;
 }
 
@@ -238,9 +238,20 @@ button:focus-visible {
 	transform: translateY(14px);
 }
 
+@keyframes screen-rise {
+	from {
+		opacity: 0;
+		transform: translateY(28px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
 @media (prefers-reduced-motion: no-preference) {
 	.js-reveal .screen.is-visible {
-		animation: hero-rise 0.7s ease both;
+		animation: screen-rise 0.7s ease both;
 	}
 }
 
@@ -282,7 +293,7 @@ button:focus-visible {
 	}
 
 	.hero h1 {
-		font-size: 2rem;
+		font-size: 2.5rem;
 	}
 
 	.pattern p {
