@@ -228,6 +228,29 @@ button:focus-visible {
 	color: var(--color-bg);
 }
 
+/* ---------- scroll reveal ----------
+   JS adds .js-reveal to <html> only when
+   IntersectionObserver is supported. Without JS
+   every section is visible at all times. */
+
+.js-reveal .screen:not(.hero) {
+	opacity: 0;
+	transform: translateY(14px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.js-reveal .screen.is-visible {
+		animation: hero-rise 0.7s ease both;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.js-reveal .screen:not(.hero) {
+		opacity: 1;
+		transform: none;
+	}
+}
+
 /* ---------- thin pages (About / Contact) ---------- */
 
 .page-thin {
