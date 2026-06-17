@@ -1,0 +1,228 @@
+/* ============================================
+   jimmorel.com — stylesheet
+   Design system: warm light palette, Fraunces +
+   Inter pairing. Decided 17 Jun 2026 (S02 follow-up).
+   Tokens live in :root — change values here, not
+   in the markup, when the palette or type evolves.
+   ============================================ */
+
+:root {
+	/* colour */
+	--color-bg: #fbf8f3;
+	--color-text: #1f1b16;
+	--color-text-muted: #6b6358;
+	--color-accent: #b5562a;
+	--color-border: #e8e1d6;
+
+	/* type */
+	--font-display: "Fraunces", Georgia, serif;
+	--font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+	/* scale */
+	--space-unit: 1rem;
+	--max-width: 640px;
+	--radius: 4px;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+}
+
+body {
+	margin: 0;
+	font-family: var(--font-body);
+	color: var(--color-text);
+	background: var(--color-bg);
+	line-height: 1.65;
+	font-size: 1.125rem;
+}
+
+h1,
+h2,
+h3 {
+	font-family: var(--font-body);
+	font-weight: 700;
+	line-height: 1.15;
+	letter-spacing: -0.02em;
+	margin: 0 0 1rem 0;
+}
+
+p {
+	margin: 0 0 1.25rem 0;
+}
+
+a {
+	color: var(--color-accent);
+}
+
+a:focus-visible,
+button:focus-visible {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 3px;
+}
+
+.container {
+	max-width: var(--max-width);
+	margin: 0 auto;
+	padding: 0 1.5rem;
+}
+
+/* ---------- header ---------- */
+
+.site-header {
+	border-bottom: 1px solid var(--color-border);
+}
+
+.header-inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-top: 1.25rem;
+	padding-bottom: 1.25rem;
+	max-width: 880px;
+}
+
+.logo {
+	font-family: var(--font-body);
+	font-weight: 700;
+	font-size: 1.125rem;
+	text-decoration: none;
+	color: var(--color-text);
+}
+
+.site-nav a {
+	margin-left: 1.5rem;
+	text-decoration: none;
+	color: var(--color-text-muted);
+	font-size: 0.9375rem;
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+	color: var(--color-accent);
+}
+
+/* ---------- screens ----------
+   Each homepage block is "one short screen, not a
+   long-form chapter" per the handoff. Generous
+   vertical padding carries that pacing. */
+
+.screen {
+	padding: 4.5rem 0;
+	border-bottom: 1px solid var(--color-border);
+}
+
+.screen:last-of-type {
+	border-bottom: none;
+}
+
+.hero h1 {
+	font-size: 2.75rem;
+	max-width: 14ch;
+}
+
+.story p,
+.values p {
+	font-size: 1.125rem;
+}
+
+/* The pattern-reveal echoes the hero line on purpose
+   (see CLAUDE.md / handoff). Setting it apart in
+   accent italic marks it as a deliberate callback,
+   not a repeated thought. */
+.pattern p {
+	font-family: var(--font-body);
+	font-style: italic;
+	font-weight: 600;
+	font-size: 1.5rem;
+	color: var(--color-accent);
+	max-width: 28ch;
+}
+
+.emphasis {
+	font-family: var(--font-body);
+	font-weight: 600;
+	font-style: italic;
+}
+
+.cta {
+	text-align: center;
+}
+
+.cta p {
+	font-family: var(--font-display);
+	font-size: 1.75rem;
+	margin-bottom: 1.5rem;
+}
+
+.cta-button {
+	display: inline-block;
+	padding: 0.75rem 1.75rem;
+	border: 1px solid var(--color-accent);
+	border-radius: var(--radius);
+	text-decoration: none;
+	font-weight: 600;
+	color: var(--color-accent);
+}
+
+.cta-button:hover {
+	background: var(--color-accent);
+	color: var(--color-bg);
+}
+
+/* ---------- thin pages (About / Contact) ---------- */
+
+.page-thin {
+	min-height: 40vh;
+}
+
+.placeholder {
+	color: var(--color-text-muted);
+	font-style: italic;
+}
+
+/* ---------- footer ---------- */
+
+.site-footer {
+	padding: 2rem 0;
+}
+
+.site-footer p {
+	margin: 0;
+	font-size: 0.875rem;
+	color: var(--color-text-muted);
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 480px) {
+	body {
+		font-size: 1rem;
+	}
+
+	.hero h1 {
+		font-size: 2rem;
+	}
+
+	.pattern p {
+		font-size: 1.25rem;
+	}
+
+	.cta p {
+		font-size: 1.5rem;
+	}
+
+	.screen {
+		padding: 3rem 0;
+	}
+}
