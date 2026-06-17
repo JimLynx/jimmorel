@@ -1,7 +1,10 @@
 /* ============================================
    jimmorel.com — stylesheet
-   Design system: warm light palette, Fraunces +
-   Inter pairing. Decided 17 Jun 2026 (S02 follow-up).
+   Design system: warm light palette, single
+   typeface (Inter) throughout. Decided 17 Jun 2026
+   (S03). The two callback lines (.pattern p,
+   .emphasis) use italic Inter at weight 600 to mark
+   them as deliberate echoes, not a second typeface.
    Tokens live in :root — change values here, not
    in the markup, when the palette or type evolves.
    ============================================ */
@@ -15,7 +18,8 @@
 	--color-border: #e8e1d6;
 
 	/* type */
-	--font-display: "Fraunces", Georgia, serif;
+	--font-display:
+		"Fraunces", Georgia, serif; /* unused, left in place per S03 handoff */
 	--font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 
 	/* scale */
@@ -126,9 +130,53 @@ button:focus-visible {
 	border-bottom: none;
 }
 
+/* Hero: anchored low-left rather than centered, with
+   a vertical accent spine. Needs its own flex layout
+   and height, .screen gives it padding only. */
+.hero {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	min-height: 70vh;
+}
+
+.hero-spine {
+	display: flex;
+	align-items: flex-start;
+	gap: 1.5rem;
+}
+
+.hero-rule {
+	width: 4px;
+	align-self: stretch;
+	background: var(--color-accent);
+	flex-shrink: 0;
+}
+
 .hero h1 {
 	font-size: 2.75rem;
 	max-width: 14ch;
+}
+
+.accent-word {
+	color: var(--color-accent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.hero-spine {
+		animation: hero-rise 0.7s ease both;
+	}
+}
+
+@keyframes hero-rise {
+	from {
+		opacity: 0;
+		transform: translateY(14px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 .story p,
@@ -160,7 +208,7 @@ button:focus-visible {
 }
 
 .cta p {
-	font-family: var(--font-display);
+	font-family: var(--font-body);
 	font-size: 1.75rem;
 	margin-bottom: 1.5rem;
 }
