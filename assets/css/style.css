@@ -138,6 +138,7 @@ button:focus-visible {
 	flex-direction: column;
 	justify-content: flex-end;
 	min-height: calc(100vh - var(--header-height, 72px));
+	position: relative;
 }
 
 .hero-spine {
@@ -179,6 +180,40 @@ button:focus-visible {
 	}
 }
 
+/* ---------- hero scroll cue ---------- */
+
+.hero-scroll-cue {
+	position: absolute;
+	left: 50%;
+	bottom: 2rem;
+	transform: translateX(-50%);
+	color: var(--color-text-muted);
+	line-height: 0;
+	animation: hero-scroll-bob 1.8s ease-in-out infinite;
+}
+
+.hero-scroll-cue svg {
+	width: 20px;
+	height: 20px;
+	display: block;
+}
+
+@keyframes hero-scroll-bob {
+	0%,
+	100% {
+		transform: translateX(-50%) translateY(0);
+	}
+	50% {
+		transform: translateX(-50%) translateY(6px);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.hero-scroll-cue {
+		animation: none;
+	}
+}
+
 .story p,
 .values p {
 	font-size: 1.125rem;
@@ -208,24 +243,110 @@ button:focus-visible {
 }
 
 .cta p {
-	font-family: var(--font-body);
-	font-size: 1.75rem;
+	font-family: var(--font-display, "Fraunces"), serif;
+	font-weight: 700;
+	font-size: 1.375rem;
+	color: var(--accent, #b5562a);
 	margin-bottom: 1.5rem;
 }
 
 .cta-button {
-	display: inline-block;
-	padding: 0.75rem 1.75rem;
-	border: 1px solid var(--color-accent);
-	border-radius: var(--radius);
-	text-decoration: none;
-	font-weight: 600;
-	color: var(--color-accent);
-}
-
-.cta-button:hover {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
 	background: var(--color-accent);
 	color: var(--color-bg);
+	border: 1px solid var(--color-accent);
+	font-weight: 500;
+	padding: 0.625rem 1.375rem;
+	border-radius: 4px;
+	text-decoration: none;
+	cursor: pointer;
+	transition: padding 0.3s ease;
+}
+
+.cta-arrow {
+	width: 0;
+	margin-right: 0;
+	transition: width 0.3s ease, margin-right 0.3s ease;
+}
+
+.cta-arrow .shaft {
+	position: relative;
+	display: block;
+	height: 1px;
+	background: currentColor;
+}
+
+.cta-arrow .shaft::before,
+.cta-arrow .shaft::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: block;
+	height: 1px;
+	width: 0;
+	background: currentColor;
+	transition: width 0.3s ease, transform 0.3s ease;
+}
+
+.cta-arrow .shaft::before { transform-origin: top right; }
+.cta-arrow .shaft::after  { transform-origin: bottom right; }
+
+.cta-button:hover .cta-arrow {
+	width: 20px;
+	margin-right: 14px;
+}
+
+.cta-button:hover .cta-arrow .shaft::before,
+.cta-button:hover .cta-arrow .shaft::after {
+	width: 6px;
+}
+
+.cta-button:hover .cta-arrow .shaft::before { transform: rotate(40deg); }
+.cta-button:hover .cta-arrow .shaft::after  { transform: rotate(-40deg); }
+
+.cta-label {
+	position: relative;
+	display: inline-grid;
+}
+
+.cta-text {
+	grid-area: 1 / 1;
+	white-space: nowrap;
+	transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.cta-text--default {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.cta-text--email {
+	opacity: 0;
+	transform: translateY(8px);
+}
+
+.cta-button:hover .cta-text--default {
+	opacity: 0;
+	transform: translateY(-8px);
+}
+
+.cta-button:hover .cta-text--email {
+	opacity: 1;
+	transform: translateY(0);
+	transition-delay: 0.08s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.cta-button,
+	.cta-arrow,
+	.cta-text,
+	.cta-arrow .shaft::before,
+	.cta-arrow .shaft::after {
+		transition: none !important;
+	}
 }
 
 /* ---------- scroll reveal ----------
@@ -294,6 +415,7 @@ button:focus-visible {
 
 	.hero h1 {
 		font-size: 2.5rem;
+		margin-bottom: 2rem;
 	}
 
 	.pattern p {
