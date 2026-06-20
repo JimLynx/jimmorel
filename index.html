@@ -31,7 +31,10 @@
 		<script>
 			function setHeaderHeight() {
 				var height = document.querySelector(".site-header").offsetHeight;
-				document.documentElement.style.setProperty("--header-height", height + "px");
+				document.documentElement.style.setProperty(
+					"--header-height",
+					height + "px",
+				);
 			}
 			setHeaderHeight();
 			window.addEventListener("resize", setHeaderHeight);
@@ -47,32 +50,47 @@
 							I find the problem behind the
 							<span class="accent-word">problem</span>.
 						</h1>
-						<p class="hero-subhead">Websites and digital systems for startups and purpose-driven teams.</p>
+						<p class="hero-subhead">
+							Websites and digital systems for startups and purpose-driven
+							teams.
+						</p>
 					</div>
 				</div>
-			<div class="hero-scroll-cue" aria-hidden="true">
-				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-					<polyline points="6 9 12 15 18 9"></polyline>
-				</svg>
-			</div>
+				<div class="hero-scroll-cue" aria-hidden="true">
+					<svg
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					>
+						<polyline points="6 9 12 15 18 9"></polyline>
+					</svg>
+				</div>
 			</section>
 
 			<!-- 2. Story one — Epitheal (sector-blind by IP agreement, see handoff) -->
 			<section class="screen story" id="story-epitheal">
 				<div class="container">
-					<p>
-						A small team of specialists came to me with a real idea, an AI
-						system to help them keep pace with far more than a few people could
-						ever hold in their heads.
-					</p>
-					<p>
-						The hard part wasn't the build. It was making sure the system never
-						replaced their judgment, only extended it. Every output still runs
-						back through the person who knows the field.
-					</p>
-					<p class="emphasis">
-						The AI does the heavy lifting. The judgment stays human.
-					</p>
+					<div class="story-inner">
+						<span class="story-number" aria-hidden="true">01</span>
+						<div>
+							<p>
+								A small team of specialists came to me with a real idea, an AI
+								system to help them keep pace with far more than a few people
+								could ever hold in their heads.
+							</p>
+							<p class="story-pivot">
+								The hard part wasn't the build. It was making sure the system
+								never replaced their judgment, only extended it. Every output
+								still runs back through the person who knows the field.
+							</p>
+							<p class="emphasis">
+								The AI does the heavy lifting. The judgment stays human.
+							</p>
+						</div>
+					</div>
 				</div>
 			</section>
 
@@ -87,23 +105,28 @@
 			</section>
 
 			<!-- 4. Story two — FIOS -->
-			<section class="screen story" id="story-fios">
+			<section class="screen story" id="story-epitheal">
 				<div class="container">
-					<p>
-						A team of retired solicitors and welfare specialists asked me for a
-						new website. Between them, decades of casework helping people get
-						the entitlements they were owed.
-					</p>
-					<p>
-						What they actually had was deep expertise sitting in files and
-						memory, with no system behind it. No way to book a consultation, no
-						calendar, nothing that ran without one of them holding it together
-						by hand.
-					</p>
-					<p>
-						A new website wasn't the fix. A system that could carry their
-						expertise forward was.
-					</p>
+					<div class="story-inner">
+						<span class="story-number" aria-hidden="true">02</span>
+						<div>
+							<p>
+								A team of retired solicitors and welfare specialists asked me
+								for a new website. Between them, decades of casework helping
+								people get the entitlements they were owed.
+							</p>
+							<p>
+								What they actually had was deep expertise sitting in files and
+								memory, with no system behind it. No way to book a consultation,
+								no calendar, nothing that ran without one of them holding it
+								together by hand.
+							</p>
+							<p class="story-pivot">
+								A new website wasn't the fix. A system that could carry their
+								expertise forward was.
+							</p>
+						</div>
+					</div>
 				</div>
 			</section>
 
@@ -121,8 +144,14 @@
 			<section class="screen cta" id="contact">
 				<div class="container">
 					<p>Tell me what's not working.</p>
-					<a class="cta-button" href="mailto:jim@jimmorel.com" aria-label="Email Jim directly at jim@jimmorel.com">
-						<span class="cta-arrow" aria-hidden="true"><span class="shaft"></span></span>
+					<a
+						class="cta-button"
+						href="mailto:jim@jimmorel.com"
+						aria-label="Email Jim directly at jim@jimmorel.com"
+					>
+						<span class="cta-arrow" aria-hidden="true"
+							><span class="shaft"></span
+						></span>
 						<span class="cta-label">
 							<span class="cta-text cta-text--default">Get hold of Jim</span>
 							<span class="cta-text cta-text--email">jim@jimmorel.com</span>

@@ -224,9 +224,45 @@ button:focus-visible {
 	}
 }
 
+.story {
+	display: flex;
+	gap: 1rem;
+}
+
+.story-number {
+	flex-shrink: 0;
+	font-size: 0.8125rem;
+	font-weight: 600;
+	color: var(--color-text-muted);
+	line-height: 1.65;
+}
+
+.story-inner {
+	display: flex;
+	gap: 1rem;
+}
+
+.story-number {
+	flex-shrink: 0;
+	font-size: 0.8125rem;
+	font-weight: 600;
+	color: var(--color-text-muted);
+	line-height: 1.65;
+}
+
 .story p,
 .values p {
 	font-size: 1.125rem;
+}
+
+/* Values line carries the site's sharpest sentence —
+   given accent weight (not italic) so it reads as a
+   deliberate statement, distinct from the pattern
+   callback's italic treatment below. Added when
+   colour was extended past hero/CTA (see handoff). */
+.values p {
+	color: var(--color-text);
+	font-weight: 600;
 }
 
 /* The pattern-reveal echoes the hero line on purpose
@@ -240,6 +276,15 @@ button:focus-visible {
 	font-size: 1.5rem;
 	color: var(--color-accent);
 	max-width: 28ch;
+}
+
+/* Marks the single reframing sentence within each
+   client story — the "problem behind the problem"
+   made concrete. One per story, accent weight without
+   italic (italic is reserved for .pattern/.emphasis). */
+.story-pivot {
+	color: var(--color-accent);
+	font-weight: 600;
 }
 
 .emphasis {
