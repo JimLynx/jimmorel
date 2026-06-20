@@ -142,21 +142,31 @@ button:focus-visible {
 }
 
 .hero-spine {
-	display: flex;
-	align-items: flex-start;
-	gap: 1.5rem;
+	display: grid;
+	grid-template-columns: auto 1fr;
+	column-gap: 1.5rem;
+	align-items: start;
 }
 
 .hero-rule {
 	width: 4px;
+	grid-row: 1 / span 2;
 	align-self: stretch;
 	background: var(--color-accent);
-	flex-shrink: 0;
 }
 
 .hero h1 {
 	font-size: 4.25rem;
 	max-width: 14ch;
+	margin-bottom: 0.5rem;
+}
+
+.hero-subhead {
+	margin: 0;
+	font-size: 1rem;
+	font-weight: 400;
+	color: var(--color-text-muted);
+	line-height: 1.5;
 }
 
 .accent-word {
