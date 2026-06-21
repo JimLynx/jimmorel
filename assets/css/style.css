@@ -162,7 +162,7 @@ button:focus-visible {
 }
 
 .hero-subhead {
-	margin: 0;
+	margin-top: 1rem;
 	font-size: 1rem;
 	font-weight: 400;
 	color: var(--color-text-muted);
