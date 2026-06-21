@@ -97,11 +97,20 @@ button:focus-visible {
 }
 
 .logo {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
 	font-family: var(--font-body);
 	font-weight: 700;
-	font-size: 1.125rem;
+	font-size: 1.375rem;
 	text-decoration: none;
 	color: var(--color-text);
+}
+
+.logo img {
+	height: 2rem;
+	width: auto;
+	display: block;
 }
 
 .site-nav a {
