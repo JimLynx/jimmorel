@@ -458,6 +458,64 @@ button:focus-visible {
 	font-style: italic;
 }
 
+.credential-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.credential {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	gap: 1.5rem;
+	align-items: start;
+	padding: 1.25rem 0;
+	border-bottom: 1px solid var(--color-border);
+}
+
+.credential:last-child {
+	border-bottom: none;
+}
+
+.credential-name {
+	font-weight: 600;
+	margin-bottom: 0.25rem;
+}
+
+.credential-meta {
+	font-size: 0.9375rem;
+	color: var(--color-text-muted);
+	margin-bottom: 0.5rem;
+}
+
+.credential-verify {
+	font-size: 0.9375rem;
+	font-weight: 500;
+}
+
+.credential-badge {
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-start;
+}
+
+.credential-badge img {
+	width: 120px;
+	max-width: 100%;
+	display: block;
+	border: 1px solid var(--color-accent);
+}
+
+@media (max-width: 480px) {
+	.credential {
+		grid-template-columns: 1fr;
+	}
+
+	.credential-badge {
+		justify-content: flex-start;
+	}
+}
+
 /* ---------- footer ---------- */
 
 .site-footer {
