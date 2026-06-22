@@ -470,6 +470,86 @@ button:focus-visible {
 	color: var(--color-text-muted);
 }
 
+/* ---------- EMAIL MODAL ---------- */
+
+.email-modal {
+	position: fixed;
+	inset: 0;
+	z-index: 500;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s ease;
+}
+
+.email-modal.open {
+	opacity: 1;
+	pointer-events: all;
+}
+
+.email-modal-backdrop {
+	position: absolute;
+	inset: 0;
+	background: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+
+.email-modal-panel {
+	position: relative;
+	z-index: 1;
+	background: var(--color-bg);
+	border-radius: 14px;
+	padding: 1.5rem;
+	width: 280px;
+	box-shadow: 0 24px 64px color-mix(in srgb, var(--color-text) 20%, transparent);
+}
+
+.email-modal-label {
+	font-size: 0.7rem;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--color-text-muted);
+	margin-bottom: 0.75rem;
+}
+
+.email-modal-option {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	width: 100%;
+	padding: 0.75rem 1rem;
+	border-radius: 8px;
+	border: none;
+	background: transparent;
+	font-family: var(--font-body);
+	font-size: 0.88rem;
+	font-weight: 500;
+	color: var(--color-text);
+	text-decoration: none;
+	cursor: pointer;
+	transition: background 0.15s;
+}
+
+.email-modal-option:hover {
+	background: var(--color-border);
+	color: var(--color-accent);
+}
+
+.email-modal-option svg {
+	width: 18px;
+	height: 18px;
+	flex-shrink: 0;
+	color: var(--color-accent);
+}
+
+.email-modal-copy {
+	border-top: 1px solid var(--color-border);
+	margin-top: 0.5rem;
+	padding-top: 1rem;
+}
+
 /* ---------- responsive ---------- */
 
 @media (max-width: 480px) {

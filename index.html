@@ -96,8 +96,8 @@
 				</div>
 			</section>
 
-			<!-- 2. Story one — Epitheal (sector-blind by IP agreement, see handoff) -->
-			<section class="screen story" id="story-epitheal">
+			<!-- 2. Story one  (sector-blind by IP agreement, see handoff) -->
+			<section class="screen story" id="story-client">
 				<div class="container">
 					<div class="story-inner">
 						<span class="story-number" aria-hidden="true">01</span>
@@ -130,8 +130,8 @@
 				</div>
 			</section>
 
-			<!-- 4. Story two — FIOS -->
-			<section class="screen story" id="story-epitheal">
+			<!-- 4. Story two  -->
+			<section class="screen story" id="story-client">
 				<div class="container">
 					<div class="story-inner">
 						<span class="story-number" aria-hidden="true">02</span>
@@ -171,6 +171,7 @@
 				<div class="container">
 					<p>Tell me what's not working.</p>
 					<a
+						id="email-trigger"
 						class="cta-button"
 						href="mailto:jim@jimmorel.com"
 						aria-label="Email Jim directly at jim@jimmorel.com"
@@ -192,6 +193,132 @@
 				<p>&copy; 2026 Jim Morel.</p>
 			</div>
 		</footer>
+
+				<!-- EMAIL MODAL -->
+		<div id="email-modal" class="email-modal" aria-hidden="true">
+			<div class="email-modal-backdrop"></div>
+			<div class="email-modal-panel">
+				<p class="email-modal-label">Open with</p>
+				<a
+					href="https://mail.google.com/mail/?view=cm&to=jim@jimmorel.com"
+					target="_blank"
+					rel="noopener"
+					class="email-modal-option"
+				>
+					<svg viewBox="0 0 24 24" fill="none">
+						<path
+							d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6z"
+							stroke="currentColor"
+							stroke-width="1.6"
+						/>
+						<path
+							d="M22 6l-10 7L2 6"
+							stroke="currentColor"
+							stroke-width="1.6"
+						/>
+					</svg>
+					Gmail
+				</a>
+				<a
+					href="https://outlook.live.com/mail/0/deeplink/compose?to=jim@jimmorel.com"
+					target="_blank"
+					rel="noopener"
+					class="email-modal-option"
+				>
+					<svg viewBox="0 0 24 24" fill="none">
+						<rect
+							x="2"
+							y="4"
+							width="20"
+							height="16"
+							rx="2"
+							stroke="currentColor"
+							stroke-width="1.6"
+						/>
+						<path d="M2 8h20M8 4v16" stroke="currentColor" stroke-width="1.6" />
+					</svg>
+					Outlook
+				</a>
+				<a href="mailto:jim@jimmorel.com" class="email-modal-option">
+					<svg viewBox="0 0 24 24" fill="none">
+						<path
+							d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"
+							stroke="currentColor"
+							stroke-width="1.6"
+						/>
+						<path
+							d="M8 12l2.5 2.5L16 9"
+							stroke="currentColor"
+							stroke-width="1.6"
+							stroke-linecap="round"
+						/>
+					</svg>
+					Apple Mail
+				</a>
+				<button id="email-copy" class="email-modal-option email-modal-copy">
+					<svg viewBox="0 0 24 24" fill="none">
+						<rect
+							x="9"
+							y="9"
+							width="13"
+							height="13"
+							rx="2"
+							stroke="currentColor"
+							stroke-width="1.6"
+						/>
+						<path
+							d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"
+							stroke="currentColor"
+							stroke-width="1.6"
+						/>
+					</svg>
+					<span>Copy address</span>
+				</button>
+			</div>
+		</div>
 		<script src="assets/js/reveal.js" defer></script>
+				<script>
+			// Email modal
+			(function () {
+				var emailTrigger = document.getElementById("email-trigger");
+				var emailModal = document.getElementById("email-modal");
+				var emailBackdrop = emailModal.querySelector(".email-modal-backdrop");
+				var copyBtn = document.getElementById("email-copy");
+				var copyLabel = copyBtn.querySelector("span");
+
+				emailTrigger.addEventListener("click", function (e) {
+					e.preventDefault();
+					emailModal.classList.add("open");
+					emailModal.setAttribute("aria-hidden", "false");
+				});
+
+				function closeEmailModal() {
+					emailModal.classList.remove("open");
+					emailModal.setAttribute("aria-hidden", "true");
+					setTimeout(function () {
+						copyLabel.textContent = "Copy address";
+					}, 400);
+				}
+
+				emailBackdrop.addEventListener("click", closeEmailModal);
+
+				emailModal
+					.querySelectorAll(".email-modal-option:not(.email-modal-copy)")
+					.forEach(function (el) {
+						el.addEventListener("click", closeEmailModal);
+					});
+
+				copyBtn.addEventListener("click", function () {
+					navigator.clipboard.writeText("jim@jimmorel.com").then(function () {
+						copyLabel.textContent = "Copied!";
+						setTimeout(closeEmailModal, 1000);
+					});
+				});
+
+				document.addEventListener("keydown", function (e) {
+					if (e.key === "Escape") closeEmailModal();
+				});
+			})();
+		</script>
 	</body>
 </html>
